@@ -8,8 +8,9 @@ import {\
 getClass,\
 getClasses,\
 getId\
-} from "./elegant.js";\\
+} from "./elegant.js";\
+\
        
-getClasses("className"); //returns a HTMLCollection of matching elements\
-getClass("className"); //equivalent to getClasses("className")[0]\
-getId("id"); //returns HTML element object that matches id
+getClasses("className");&nbsp //returns a HTMLCollection of matching elements\
+getClass("className");&nbsp //equivalent to getClasses("className")[0]\
+getId("id");&nbsp //returns HTML element object that matches id
