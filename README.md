@@ -9,7 +9,6 @@ getClass,\
 getClasses,\
 getId\
 } from "./elegant.js";\
-\
        
 getClasses("className");&nbsp //returns a HTMLCollection of matching elements\
 getClass("className");&nbsp //equivalent to getClasses("className")[0]\
