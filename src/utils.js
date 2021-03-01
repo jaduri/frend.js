@@ -8,16 +8,22 @@ function addListenerToList(list, eventType, callback){
 }
 
 //serialise a form
-function serialise(form){
-  let i = 0;
-  const nodes = form.children;
-  let data = "";
-  while(i < nodes.length){
-    if(nodes[i].localName == 'input' || nodes[i].localName == 'textarea'){
-      data += `${encodeURIComponent(nodes[i].name)}=${encodeURIComponent(nodes[i].value)}`;
-      data += "&";
+function serialise(formElement){
+  const node = formElement;
+  const inputFields = ["textarea", "input", "select"];
+  let data = [];
+  let value = "";
+
+  if(inputFields.includes(node.localName)){
+    value = `${encodeURIComponent(node.name)}=${encodeURIComponent(node.value)}`;
+    data.push(value);
+  }else if(node.children.length > 0){
+    for(let i = 0; i < node.children.length; i++){
+      value = serialise(node.children[i]);
+      (value) && (data.push(value));
     }
-    i++;
+  }else{
+    return;
   }
-  return data.slice(0, -1);
+  return data.join("&");
 }
